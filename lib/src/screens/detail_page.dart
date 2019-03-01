@@ -7,9 +7,10 @@ import '../widgets/price_card.dart';
 import '../widgets/book_button.dart';
 
 class ItemDetail extends StatelessWidget {
-  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard(), BookButton()];
+  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard(),];
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BookButton(),
       backgroundColor: Color(0xffcad8e4),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {

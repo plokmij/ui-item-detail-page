@@ -21,13 +21,13 @@ class TitleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
       child: Column(
         children: <Widget>[
           buildNameRow(),
           Divider(
             color: Colors.grey,
-            height: 20.0,
+            height: 25.0,
           ),
           buildFeaturesRow(),
         ],
