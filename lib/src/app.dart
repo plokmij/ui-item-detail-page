@@ -5,6 +5,9 @@ class App extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home:ItemDetail(),
+      theme: ThemeData(
+        backgroundColor: Colors.grey,
+      ),
     );
   }
 }

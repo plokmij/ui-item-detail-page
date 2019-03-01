@@ -16,10 +16,24 @@ class TitleCard extends StatelessWidget {
     fontSize: 14.0,
   );
 
-  Widget build(BuildContext) {
+  Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
-      child: Row(
+      child: Column(
+        children: <Widget>[
+          buildNameRow(),
+          Divider(
+            color: Colors.grey,
+            height: 20.0,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildNameRow(){
+   return Row(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(20.0),
@@ -50,7 +64,6 @@ class TitleCard extends StatelessWidget {
             size: 48.0,
           ),
         ],
-      ),
-    );
+      );
   }
 }

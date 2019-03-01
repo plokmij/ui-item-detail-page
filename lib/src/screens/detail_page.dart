@@ -5,20 +5,25 @@ import '../widgets/titlecard.dart';
 class ItemDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffcad8e4),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           print(innerBoxIsScrolled);
           return <Widget>[
             SliverAppBar(
-              backgroundColor: Colors.transparent,
+              title: Text('Achantr'),
+              //backgroundColor: Color(0x00ffff),
               leading: Icon(Icons.arrow_back),
               actions: <Widget>[
-                Icon(Icons.favorite)
+                Icon(
+                  Icons.favorite,
+                  color: Color(0xffcad8e4),
+                )
               ],
               expandedHeight:
                   (MediaQuery.of(context).size.height / 2) * (3 / 4),
               pinned: true,
-              floating: true,
+              forceElevated: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 background: imageContainer(),
@@ -26,13 +31,15 @@ class ItemDetail extends StatelessWidget {
             ),
           ];
         },
-        body: Column(
-          children: <Widget>[
-            TitleCard(
-              name: "Samfan",
-              address: "HH Ha Goo Gl",
-            )
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              TitleCard(
+                name: "Samfan",
+                address: "HH Ha Goo Gl",
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -43,8 +50,8 @@ class ItemDetail extends StatelessWidget {
       height: 200.0,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Colors.blue,
+        color: Color(0xff214899),
       ),
     );
-  }
+  } 
 }
