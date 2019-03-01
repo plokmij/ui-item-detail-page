@@ -4,6 +4,7 @@ import '../widgets/titlecard.dart';
 import '../widgets/date_time_selector.dart';
 
 class ItemDetail extends StatelessWidget {
+  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeSelector(),];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcad8e4),
@@ -33,15 +34,10 @@ class ItemDetail extends StatelessWidget {
           ];
         },
         body: Container(
-          height: 400.0,
-          child: ListView(
-            children: <Widget>[
-              TitleCard(
-                name: "Samfan",
-                address: "HH Ha Goo Gl",
-              ),
-              DateTimeSelector(),
-            ],
+          child: ListView.builder(
+            itemBuilder: (context, int index){
+              return widgets[index];
+            },
           ),
         ),
       ),

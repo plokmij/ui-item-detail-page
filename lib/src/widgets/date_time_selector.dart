@@ -15,6 +15,11 @@ class DateTimeSelector extends StatelessWidget {
       child: Column(
         children: <Widget>[
           buildDateSelector(),
+          Divider(
+            color: Colors.grey,
+            height: 20.0,
+          ),
+          buildTimeRow(),
         ],
       ),
     );
@@ -34,6 +39,25 @@ class DateTimeSelector extends StatelessWidget {
             },
           ),
         )
+      ],
+    );
+  }
+
+  Widget buildTimeRow(){
+    return Row(
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            Text("Start Time"),
+            timeSelector(),
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            Text("End Time"),
+            timeSelector(),
+          ],
+        ),
       ],
     );
   }
