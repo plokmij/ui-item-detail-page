@@ -17,7 +17,10 @@ class ItemDetail extends StatelessWidget {
     PriceCard(),
   ];
   Widget build(BuildContext context) {
+    //final double statusBarHeight = MediaQuery.of(context).padding.top;    
     return Scaffold(
+      primary: true,
+      appBar: EmptyAppBar(),
       bottomNavigationBar: BookButton(),
       backgroundColor: Color(0xffcad8e4),
       body: NestedScrollView(
@@ -69,6 +72,16 @@ class ItemDetail extends StatelessWidget {
         shape: BoxShape.rectangle,
         color: Color(0xff214899),
       ),
+      child: Image.network("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2019/02/28/15513389901606.jpg",fit: BoxFit.cover,colorBlendMode: BlendMode.darken,),
     );
   }
+}
+
+class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  Widget build(BuildContext context){
+    return Container();
+  }
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(0.0,0.0);
 }
