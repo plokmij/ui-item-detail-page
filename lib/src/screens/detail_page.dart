@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 import '../widgets/titlecard.dart';
 import '../widgets/date_time_card.dart';
 import '../widgets/size_selector.dart';
+import '../widgets/price_card.dart';
 
 class ItemDetail extends StatelessWidget {
-  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(),];
+  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard()];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcad8e4),
@@ -36,7 +37,7 @@ class ItemDetail extends StatelessWidget {
         },
         body: Container(
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: widgets.length,
             itemBuilder: (context, int index){
               return widgets[index];
             },

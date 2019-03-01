@@ -67,6 +67,7 @@ class DateTimeCard extends StatelessWidget {
             ],
           ),
         ),
+        Spacer(),
         Expanded(
             child: Column(
           children: <Widget>[
