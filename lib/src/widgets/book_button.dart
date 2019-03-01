@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BookButton extends StatelessWidget {
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height / 9.5;
+    final height = MediaQuery.of(context).size.height / 10;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
       decoration: BoxDecoration(

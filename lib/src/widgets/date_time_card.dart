@@ -9,7 +9,7 @@ class DateTimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
-      padding: EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.white,
@@ -22,6 +22,11 @@ class DateTimeCard extends StatelessWidget {
             height: 40.0,
           ),
           buildTimeText(),
+          Divider(
+            color: Colors.grey,
+            height: 40.0,
+          ),
+          availability(),
         ],
       ),
     );
@@ -56,9 +61,9 @@ class DateTimeCard extends StatelessWidget {
               ),
               Container(
                 child: Text(
-                  "Not Selected",
+                  "Select",
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xffff4c5d),
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -77,9 +82,9 @@ class DateTimeCard extends StatelessWidget {
             ),
             Container(
               child: Text(
-                "Not Selected",
+                "Select",
                 style: TextStyle(
-                  color: Colors.red,
+                  color: Color(0xffff4c5d),
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -88,6 +93,12 @@ class DateTimeCard extends StatelessWidget {
           ],
         )),
       ],
+    );
+  }
+
+  Widget availability() {
+    return Container(
+      height: 100,
     );
   }
 }

@@ -7,7 +7,15 @@ import '../widgets/price_card.dart';
 import '../widgets/book_button.dart';
 
 class ItemDetail extends StatelessWidget {
-  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard(),];
+  final widgets = [
+    TitleCard(
+      name: "Product Name",
+      address: "Small Decription  ",
+    ),
+    DateTimeCard(),
+    SizeSelector(),
+    PriceCard(),
+  ];
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BookButton(),
@@ -17,14 +25,18 @@ class ItemDetail extends StatelessWidget {
           print(innerBoxIsScrolled);
           return <Widget>[
             SliverAppBar(
-              //title: Text('Achantr'),
-              //backgroundColor: Color(0x00ffff),
+              backgroundColor: Color(0xffff4c5d),
               leading: Icon(Icons.arrow_back),
+              centerTitle: true,
+              title: innerBoxIsScrolled?Text("Product Name"):Text(" ") ,
               actions: <Widget>[
-                Icon(
-                  Icons.favorite,
-                  color: Color(0xffcad8e4),
-                )
+                Container(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: Icon(
+                    Icons.favorite,
+                    color: Color(0xffcad8e4),
+                  ),
+                ),
               ],
               expandedHeight:
                   (MediaQuery.of(context).size.height / 2) * (3 / 4),
@@ -39,8 +51,9 @@ class ItemDetail extends StatelessWidget {
         },
         body: Container(
           child: ListView.builder(
+            padding: EdgeInsets.all(0.0),
             itemCount: widgets.length,
-            itemBuilder: (context, int index){
+            itemBuilder: (context, int index) {
               return widgets[index];
             },
           ),

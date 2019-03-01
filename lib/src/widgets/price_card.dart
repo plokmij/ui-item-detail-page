@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class PriceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
+      //height: 100,
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       margin: EdgeInsets.only(bottom: 5.0),

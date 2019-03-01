@@ -38,26 +38,23 @@ class TitleCard extends StatelessWidget {
   Widget buildNameRow() {
     return Row(
       children: <Widget>[
-        Container(
+        /*Container(
           padding: EdgeInsets.all(20.0),
           child: Center(child: Text("Logo")),
           margin: EdgeInsets.only(right: 10.0),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Color(0xffff4c5d),
           ),
-        ),
+        ),*/
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                Text(
+            Text(
                   name,
                   textAlign: TextAlign.left,
                   style: header,
                 ),
-              ],
-            ),
             Text(
               address,
               textAlign: TextAlign.left,
