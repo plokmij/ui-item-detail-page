@@ -5,6 +5,7 @@ class PriceCard extends StatelessWidget {
     return Container(
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      margin: EdgeInsets.only(bottom: 5.0),
       child: buildContent(),
     );
   }

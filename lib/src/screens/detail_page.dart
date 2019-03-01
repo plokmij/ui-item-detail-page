@@ -4,9 +4,10 @@ import '../widgets/titlecard.dart';
 import '../widgets/date_time_card.dart';
 import '../widgets/size_selector.dart';
 import '../widgets/price_card.dart';
+import '../widgets/book_button.dart';
 
 class ItemDetail extends StatelessWidget {
-  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard()];
+  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),SizeSelector(), PriceCard(), BookButton()];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcad8e4),
