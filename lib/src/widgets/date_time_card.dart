@@ -4,11 +4,12 @@ class DateTimeCard extends StatelessWidget {
   final TextStyle header = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.0,
+    color: Color(0xff214899),
   );
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.white,
@@ -18,7 +19,7 @@ class DateTimeCard extends StatelessWidget {
           buildDateText(),
           Divider(
             color: Colors.grey,
-            height: 20.0,
+            height: 40.0,
           ),
           buildTimeText(),
         ],
@@ -30,6 +31,7 @@ class DateTimeCard extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
+          padding: EdgeInsets.only(bottom: 10.0),
           child: Text("Date"),
         ),
         Container(
@@ -49,6 +51,7 @@ class DateTimeCard extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
+                padding: EdgeInsets.only(bottom: 10.0),
                 child: Text("Start Time"),
               ),
               Container(
@@ -68,6 +71,7 @@ class DateTimeCard extends StatelessWidget {
             child: Column(
           children: <Widget>[
             Container(
+              padding: EdgeInsets.only(bottom: 10.0),
               child: Text("End Time"),
             ),
             Container(
