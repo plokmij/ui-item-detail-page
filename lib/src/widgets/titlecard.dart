@@ -39,7 +39,7 @@ class TitleCard extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          //padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(20.0),
           child: Center(child: Text("Logo")),
           margin: EdgeInsets.only(right: 10.0),
           decoration: BoxDecoration(
@@ -47,12 +47,16 @@ class TitleCard extends StatelessWidget {
           ),
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              name,
-              textAlign: TextAlign.left,
-              style: header,
+            Column(
+              children: <Widget>[
+                Text(
+                  name,
+                  textAlign: TextAlign.left,
+                  style: header,
+                ),
+              ],
             ),
             Text(
               address,
@@ -76,80 +80,80 @@ class TitleCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-            padding: EdgeInsets.only(right: 5.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.add_a_photo,
-                  size: 32.0,
-                  color: iconColor,
-                ),
-                Text("Feature")
-              ],
-            ),
+          padding: EdgeInsets.only(right: 5.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.add_a_photo,
+                size: 32.0,
+                color: iconColor,
+              ),
+              Text("Feature")
+            ],
           ),
+        ),
         Container(
-            padding: EdgeInsets.only(right: 5.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.add_a_photo,
-                  size: 32.0,
-                  color: iconColor,
-                ),
-                Text("Feature")
-              ],
-            ),
+          padding: EdgeInsets.only(right: 5.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.add_a_photo,
+                size: 32.0,
+                color: iconColor,
+              ),
+              Text("Feature")
+            ],
           ),
+        ),
         Container(
-            padding: EdgeInsets.only(right: 5.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.add_a_photo,
-                  size: 32.0,
-                  color: iconColor,
-                ),
-                Text("Feature")
-              ],
-            ),
+          padding: EdgeInsets.only(right: 5.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.add_a_photo,
+                size: 32.0,
+                color: iconColor,
+              ),
+              Text("Feature")
+            ],
           ),
+        ),
         Container(
-            padding: EdgeInsets.only(right: 5.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.add_a_photo,
-                  size: 32.0,
-                  color: iconColor,
-                ),
-                Text("Feature")
-              ],
-            ),
+          padding: EdgeInsets.only(right: 5.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.add_a_photo,
+                size: 32.0,
+                color: iconColor,
+              ),
+              Text("Feature")
+            ],
           ),
+        ),
         Container(
-            padding: EdgeInsets.only(right: 5.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.add_a_photo,
-                  size: 32.0,
-                  color: iconColor,
-                ),
-                Text("Feature")
-              ],
-            ),
+          padding: EdgeInsets.only(right: 5.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.add_a_photo,
+                size: 32.0,
+                color: iconColor,
+              ),
+              Text("Feature")
+            ],
           ),
+        ),
       ],
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../widgets/titlecard.dart';
-import '../widgets/date_time_selector.dart';
+import '../widgets/date_time_card.dart';
 
 class ItemDetail extends StatelessWidget {
-  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeSelector(),];
+  final widgets = [TitleCard(name: "Samfan",address: "Fcuk asd  ",), DateTimeCard(),];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffcad8e4),
@@ -13,7 +13,7 @@ class ItemDetail extends StatelessWidget {
           print(innerBoxIsScrolled);
           return <Widget>[
             SliverAppBar(
-              title: Text('Achantr'),
+              //title: Text('Achantr'),
               //backgroundColor: Color(0x00ffff),
               leading: Icon(Icons.arrow_back),
               actions: <Widget>[
@@ -35,6 +35,7 @@ class ItemDetail extends StatelessWidget {
         },
         body: Container(
           child: ListView.builder(
+            itemCount: 2,
             itemBuilder: (context, int index){
               return widgets[index];
             },
