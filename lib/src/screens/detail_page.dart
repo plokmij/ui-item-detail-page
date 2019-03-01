@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../widgets/titlecard.dart';
+import '../widgets/date_time_selector.dart';
 
 class ItemDetail extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -31,13 +32,15 @@ class ItemDetail extends StatelessWidget {
             ),
           ];
         },
-        body: SingleChildScrollView(
-          child: Column(
+        body: Container(
+          height: 400.0,
+          child: ListView(
             children: <Widget>[
               TitleCard(
                 name: "Samfan",
                 address: "HH Ha Goo Gl",
-              )
+              ),
+              DateTimeSelector(),
             ],
           ),
         ),
@@ -53,5 +56,5 @@ class ItemDetail extends StatelessWidget {
         color: Color(0xff214899),
       ),
     );
-  } 
+  }
 }

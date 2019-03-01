@@ -6,17 +6,17 @@ class TitleCard extends StatelessWidget {
 
   TitleCard({this.name, this.address});
 
-  TextStyle header = TextStyle(
+  final TextStyle header = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 20.0,
   );
 
-  TextStyle subtitle = TextStyle(
+  final TextStyle subtitle = TextStyle(
     color: Colors.grey,
     fontSize: 14.0,
   );
 
-  Color iconColor = Colors.grey;
+  final Color iconColor = Colors.grey;
 
   Widget build(BuildContext context) {
     return Container(
@@ -65,6 +65,7 @@ class TitleCard extends StatelessWidget {
         Icon(
           Icons.location_on,
           size: 48.0,
+          color: iconColor,
         ),
       ],
     );
