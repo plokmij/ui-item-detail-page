@@ -38,7 +38,7 @@ class DateTimeCard extends StatelessWidget {
     DateTimeBloc dateTimeBloc = DateTimeProvider.of(context);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+      //padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.white,
@@ -50,12 +50,15 @@ class DateTimeCard extends StatelessWidget {
             color: Colors.grey,
             height: 40.0,
           ),
-          buildTimeText(context, dateTimeBloc),
+          availability(context),
           Divider(
             color: Colors.grey,
-            height: 40.0,
+            height: 30.0,
           ),
-          availability(),
+          Padding(
+            padding: EdgeInsets.only(left: 10.0,right: 10.0,bottom: 20.0),
+            child: buildTimeText(context, dateTimeBloc),
+          ),
         ],
       ),
     );
@@ -65,7 +68,8 @@ class DateTimeCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         _selectDate(context).then((value) {
-          if (selectedDate.day == DateTime.now().day && selectedDate.month ==DateTime.now().month) {
+          if (selectedDate.day == DateTime.now().day &&
+              selectedDate.month == DateTime.now().month) {
             dateTimeBloc.changeDate("Today");
           } else {
             var date = s_electedDate.split(" ")[0].split("-");
@@ -231,9 +235,64 @@ class DateTimeCard extends StatelessWidget {
     );
   }
 
-  Widget availability() {
+  Widget availability(BuildContext context) {
+    List<Widget> slots = [];
+    for (int i = 0; i < 8; i++) {
+      slots.add(buildSlot());
+    }
+    return Column(
+      children: <Widget>[
+        SingleChildScrollView(
+          padding: EdgeInsets.only(left: 5.0),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: slots,
+          ),
+        ),
+        SingleChildScrollView(
+          padding: EdgeInsets.only(left: 40.0),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: slots,
+          ),
+        ),
+        SingleChildScrollView(
+          padding: EdgeInsets.only(left: 5.0),
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: slots,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildSlot() {
     return Container(
-      height: 100,
+      //height: 20.0,
+      //width: 80.0,
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+        color: Color(0xff214899),
+        borderRadius: BorderRadius.circular(25.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black54,
+            offset: Offset(0.5, 1.0),
+          )
+        ],
+        shape: BoxShape.rectangle,
+      ),
+      child: Center(
+        child: Text(
+          "04 PM - 05 PM",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 12.0
+          ),
+        ),
+      ),
     );
   }
 }
