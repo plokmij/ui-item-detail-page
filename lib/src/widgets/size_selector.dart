@@ -94,7 +94,7 @@ class SizeSelector extends StatelessWidget {
                                 : Color(0xffcad8e4),
                           ),
                           child: Text(
-                            "30\"",
+                            "32\"",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

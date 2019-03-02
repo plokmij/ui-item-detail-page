@@ -11,6 +11,7 @@ class DateTimeBloc {
   Stream get endTime => _endTime.stream;
   Stream get date => _date.stream;
   Stream get size => _size.stream;
+  Stream<bool> get submitValid => Observable.combineLatest4(startTime, endTime, date, size, (s,e,d,siz)=>true);
 
   Function get changeStartTime => _startTime.sink.add;
   Function get changeEndTime => _endTime.sink.add;
