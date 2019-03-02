@@ -36,7 +36,7 @@ class SizeSelector extends StatelessWidget {
                         )
                       ],
                       shape: BoxShape.rectangle,
-                      color: Color(0xff214899),
+                      color: Color(0xffff4c5d),
                     ),
                     child: Text(
                       "30\"",

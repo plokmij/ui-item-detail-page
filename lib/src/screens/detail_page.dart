@@ -25,7 +25,7 @@ class ItemDetail extends StatelessWidget {
       backgroundColor: Color(0xffcad8e4),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          print(innerBoxIsScrolled);
+          //print(innerBoxIsScrolled);
           return <Widget>[
             SliverAppBar(
               backgroundColor: Color(0xffff4c5d),

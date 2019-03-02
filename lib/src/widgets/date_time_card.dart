@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../blocs/date_time_provider.dart';
 
 class DateTimeCard extends StatelessWidget {
   final TextStyle header = TextStyle(
@@ -8,13 +9,15 @@ class DateTimeCard extends StatelessWidget {
   );
 
   //DateTime selectedDate = DateTime.now();
-
+  TimeOfDay initialTime = TimeOfDay.now();
+  String selectedTime = "";
   Future<TimeOfDay> _selectTime(BuildContext context) async {
     final TimeOfDay picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: TimeOfDay.now().hour + 1, minute: 0),
     );
-    print(picked);
+    initialTime = picked;
+    selectedTime = picked.format(context);
     return picked;
   }
 
@@ -30,6 +33,7 @@ class DateTimeCard extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
+    DateTimeBloc dateTimeBloc = DateTimeProvider.of(context);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5.0),
       padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
@@ -44,7 +48,7 @@ class DateTimeCard extends StatelessWidget {
             color: Colors.grey,
             height: 40.0,
           ),
-          buildTimeText(context),
+          buildTimeText(context, dateTimeBloc),
           Divider(
             color: Colors.grey,
             height: 40.0,
@@ -76,7 +80,7 @@ class DateTimeCard extends StatelessWidget {
                 )
               ],
               shape: BoxShape.rectangle,
-              color: Color(0xff214899),
+              color: Color(0xffff4c5d),
             ),
             child: Text(
               "Select",
@@ -88,13 +92,16 @@ class DateTimeCard extends StatelessWidget {
     );
   }
 
-  Widget buildTimeText(BuildContext context) {
+  Widget buildTimeText(BuildContext context, DateTimeBloc dateTimeBloc) {
     return Row(
       children: <Widget>[
         Expanded(
           child: GestureDetector(
             onTap: () {
-              _selectTime(context);
+              _selectTime(context).then((value) {
+                dateTimeBloc.changeStartTime(selectedTime);
+                dateTimeBloc.changeEndTime(initialTime.replacing(hour: initialTime.hour+1).format(context));
+              });
             },
             child: Column(
               children: <Widget>[
@@ -113,15 +120,30 @@ class DateTimeCard extends StatelessWidget {
                       )
                     ],
                     shape: BoxShape.rectangle,
-                    color: Color(0xff214899),
+                    color: Color(0xffff4c5d),
                   ),
-                  child: Text(
-                    "Select",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: StreamBuilder(
+                    stream: dateTimeBloc.startTime,
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Text(
+                          "Select",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        );
+                      }
+                      return Text(
+                        snapshot.data,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -132,7 +154,9 @@ class DateTimeCard extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              _selectTime(context);
+              _selectTime(context).then((value) {
+                dateTimeBloc.changeEndTime(selectedTime);
+              });
             },
             child: Column(
               children: <Widget>[
@@ -151,15 +175,30 @@ class DateTimeCard extends StatelessWidget {
                       )
                     ],
                     shape: BoxShape.rectangle,
-                    color: Color(0xff214899),
+                    color: Color(0xffff4c5d),
                   ),
-                  child: Text(
-                    "Select",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: StreamBuilder(
+                    stream: dateTimeBloc.endTime,
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Text(
+                          "Select",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        );
+                      }
+                      return Text(
+                        snapshot.data,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
