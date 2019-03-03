@@ -41,6 +41,7 @@ class SizeSelector extends StatelessWidget {
                             vertical: 8.0,
                           ),
                           decoration: BoxDecoration(
+                            //borderRadius: BorderRadius.circular(25.0),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black54,
@@ -82,6 +83,7 @@ class SizeSelector extends StatelessWidget {
                             vertical: 8.0,
                           ),
                           decoration: BoxDecoration(
+                            //borderRadius: BorderRadius.circular(25.0),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black54,

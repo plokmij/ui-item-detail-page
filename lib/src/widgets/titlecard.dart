@@ -16,7 +16,7 @@ class TitleCard extends StatelessWidget {
     fontSize: 14.0,
   );
 
-  final Color iconColor = Colors.grey;
+  final Color iconColor = Color(0xffcad8e4);
 
   Widget build(BuildContext context) {
     return Container(

@@ -34,6 +34,33 @@ class DateTimeCard extends StatelessWidget {
     return picked;
   }
 
+  final List<String> idToTimeRange = [
+    "12:00 AM - 1:00 AM",
+    "1:00 AM - 2:00 AM",
+    "2:00 AM - 3:00 AM",
+    "3:00 AM - 4:00 AM",
+    "4:00 AM - 5:00 AM",
+    "5:00 AM - 6:00 AM",
+    "6:00 AM - 7:00 AM",
+    "7:00 AM - 8:00 AM",
+    "8:00 AM - 9:00 AM",
+    "9:00 AM - 10:00 AM",
+    "10:00 AM - 11:00 AM",
+    "11:00 AM - 12:00 PM",
+    "12:00 PM - 1:00 PM",
+    "1:00 PM - 2:00 PM",
+    "2:00 PM - 3:00 PM",
+    "3:00 PM - 4:00 PM",
+    "4:00 PM - 5:00 PM",
+    "5:00 PM - 6:00 PM",
+    "6:00 PM - 7:00 PM",
+    "7:00 PM - 8:00 PM",
+    "8:00 PM - 9:00 PM",
+    "9:00 PM - 10:00 PM",
+    "10:00 PM - 11:00 PM",
+    "11:00 PM - 12:00 AM"
+  ];
+
   Widget build(BuildContext context) {
     DateTimeBloc dateTimeBloc = DateTimeProvider.of(context);
     return Container(
@@ -89,6 +116,7 @@ class DateTimeCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
             decoration: BoxDecoration(
+              //borderRadius: BorderRadius.circular(25.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black54,
@@ -148,6 +176,7 @@ class DateTimeCard extends StatelessWidget {
                         offset: Offset(1.0, 2.0),
                       )
                     ],
+                    //borderRadius: BorderRadius.circular(25.0),
                     shape: BoxShape.rectangle,
                     color: Color(0xffff4c5d),
                   ),
@@ -197,6 +226,7 @@ class DateTimeCard extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                   decoration: BoxDecoration(
+                    //borderRadius: BorderRadius.circular(25.0),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black54,
@@ -243,6 +273,8 @@ class DateTimeCard extends StatelessWidget {
       return GestureDetector(
         onTap: () {
           dateTimeBloc.changeSlot(id);
+          dateTimeBloc.changeStartTime(idToTimeRange[id].split(" - ")[0]);
+          dateTimeBloc.changeEndTime(idToTimeRange[id].split(" - ")[1]);
         },
         child: StreamBuilder(
           stream: dateTimeBloc.slot,
@@ -251,8 +283,12 @@ class DateTimeCard extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               margin: EdgeInsets.all(5.0),
               decoration: BoxDecoration(
-                color: snapshot.hasData?(snapshot.data==id?Color(0xff214899):Colors.grey):Colors.grey,
-                borderRadius: BorderRadius.circular(25.0),
+                color: snapshot.hasData
+                    ? (snapshot.data == id
+                        ? Color(0xffff4c5d)
+                        : Color(0xff214899))
+                    : Color(0xff214899),
+                //borderRadius: BorderRadius.circular(25.0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black54,
@@ -263,8 +299,12 @@ class DateTimeCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "04 PM - 05 PM",
-                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  idToTimeRange[id],
+                  style: TextStyle(
+                      color: snapshot.hasData
+                          ? (snapshot.data == id ? Colors.white : Colors.white)
+                          : Colors.white,
+                      fontSize: 12.0),
                 ),
               ),
             );
@@ -279,25 +319,29 @@ class DateTimeCard extends StatelessWidget {
     }
     return Column(
       children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(bottom: 10.0),
+          child: Text("Available Slots"),
+        ),
         SingleChildScrollView(
           padding: EdgeInsets.only(left: 5.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots.sublist(0,8),
+            children: slots.sublist(0, 8),
           ),
         ),
         SingleChildScrollView(
           padding: EdgeInsets.only(left: 40.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots.sublist(8,16),
+            children: slots.sublist(8, 16),
           ),
         ),
         SingleChildScrollView(
           padding: EdgeInsets.only(left: 5.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots.sublist(16,24),
+            children: slots.sublist(16, 24),
           ),
         ),
       ],
