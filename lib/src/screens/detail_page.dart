@@ -5,6 +5,7 @@ import '../widgets/date_time_card.dart';
 import '../widgets/size_selector.dart';
 import '../widgets/price_card.dart';
 import '../widgets/book_button.dart';
+import '../styles/styles.dart';
 
 class ItemDetail extends StatelessWidget {
   final widgets = [
@@ -28,7 +29,7 @@ class ItemDetail extends StatelessWidget {
           //print(innerBoxIsScrolled);
           return <Widget>[
             SliverAppBar(
-              backgroundColor: Color(0xffff4c5d),
+              backgroundColor: Colours.primaryColor,
               leading: Icon(Icons.arrow_back),
               centerTitle: true,
               title: innerBoxIsScrolled?Text("Product Name"):Text(" ") ,
@@ -37,7 +38,7 @@ class ItemDetail extends StatelessWidget {
                   padding: EdgeInsets.only(right: 10.0),
                   child: Icon(
                     Icons.favorite,
-                    color: Color(0xffcad8e4),
+                    color: Colours.themeGrey,
                   ),
                 ),
               ],
@@ -70,7 +71,7 @@ class ItemDetail extends StatelessWidget {
       height: 200.0,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Color(0xffff4c5d),
+        color: Colours.primaryColor,
       ),
       child: Image.network("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2019/02/28/15513389901606.jpg",fit: BoxFit.cover,colorBlendMode: BlendMode.darken,),
     );

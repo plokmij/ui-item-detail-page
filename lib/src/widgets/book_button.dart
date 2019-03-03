@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import '../blocs/date_time_provider.dart';
+import '../styles/styles.dart';
 
 class BookButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height / 10;
     final dateTimeBloc = DateTimeProvider.of(context);
-
+    
     return GestureDetector(
       onTap: () {
-        //_selectDate(context);
+        dateTimeBloc.getBookingDetails();
       },
       child: StreamBuilder(
         stream: dateTimeBloc.submitValid,
@@ -19,9 +20,9 @@ class BookButton extends StatelessWidget {
               shape: BoxShape.rectangle,
               //borderRadius: BorderRadius.all(Radius.circular(8.0)),
               border: BorderDirectional(
-                top: BorderSide(width: 1.0, color: Color(0xffcad8e4)),
+                top: BorderSide(width: 1.0, color: Colours.themeGrey),
               ),
-              color: snapshot.hasData ? Color(0xff214899) : Color(0xffcad8e4),
+              color: snapshot.hasData ? Colours.primaryColor : Colours.themeGrey,
             ),
             height: height,
             //color: Colors.white,
@@ -31,7 +32,7 @@ class BookButton extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                  color: Colours.white,
                 ),
               ),
             ),

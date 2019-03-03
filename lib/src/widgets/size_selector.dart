@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/date_time_provider.dart';
+import '../styles/styles.dart';
 
 class SizeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -21,7 +22,8 @@ class SizeSelector extends StatelessWidget {
       children: <Widget>[
         Container(
           padding: EdgeInsets.only(bottom: 10.0),
-          child: Text('Select Size'),
+          child: Text('Select Size',
+          style: HeaderStyles.dateTimePicker,),
         ),
         Row(
           children: <Widget>[
@@ -37,7 +39,7 @@ class SizeSelector extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 20.0,
+                            horizontal: 15.0,
                             vertical: 8.0,
                           ),
                           decoration: BoxDecoration(
@@ -50,15 +52,12 @@ class SizeSelector extends StatelessWidget {
                             ],
                             shape: BoxShape.rectangle,
                             color: snapshot.data == "30"
-                                ? Color(0xffff4c5d)
-                                : Color(0xffcad8e4),
+                                ? Colours.primaryColor
+                                : Colours.themeGrey,
                           ),
                           child: Text(
                             "30\"",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0),
+                            style: HeaderStyles.buttonText,
                           ),
                         ),
                       );
@@ -79,7 +78,7 @@ class SizeSelector extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 20.0,
+                            horizontal: 15.0,
                             vertical: 8.0,
                           ),
                           decoration: BoxDecoration(
@@ -92,15 +91,12 @@ class SizeSelector extends StatelessWidget {
                             ],
                             shape: BoxShape.rectangle,
                             color: snapshot.data == "32"
-                                ? Color(0xffff4c5d)
-                                : Color(0xffcad8e4),
+                                ? Colours.primaryColor
+                                : Colours.themeGrey,
                           ),
                           child: Text(
                             "32\"",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0),
+                            style: HeaderStyles.buttonText,
                           ),
                         ),
                       );

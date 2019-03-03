@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../blocs/date_time_provider.dart';
+import '../styles/styles.dart';
 
 class DateTimeCard extends StatelessWidget {
   final TextStyle header = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 18.0,
-    color: Colors.white,
+    color: Colours.white,
   );
 
   DateTime selectedDate = DateTime.now();
@@ -68,7 +69,7 @@ class DateTimeCard extends StatelessWidget {
       //padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Colors.white,
+        color: Colours.white,
       ),
       child: Column(
         children: <Widget>[
@@ -77,12 +78,12 @@ class DateTimeCard extends StatelessWidget {
             child: buildDateText(context, dateTimeBloc),
           ),
           Divider(
-            color: Colors.grey,
+            color: Colours.themeBlack,
             height: 40.0,
           ),
           availability(context, dateTimeBloc),
           Divider(
-            color: Colors.grey,
+            color: Colours.themeBlack,
             height: 30.0,
           ),
           Padding(
@@ -111,7 +112,10 @@ class DateTimeCard extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: EdgeInsets.only(bottom: 10.0),
-            child: Text("Date"),
+            child: Text(
+              "Date",
+              style: HeaderStyles.dateTimePicker,
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -124,7 +128,7 @@ class DateTimeCard extends StatelessWidget {
                 )
               ],
               shape: BoxShape.rectangle,
-              color: Color(0xffff4c5d),
+              color: Colours.primaryColor,
             ),
             child: StreamBuilder(
               stream: dateTimeBloc.date,
@@ -132,12 +136,12 @@ class DateTimeCard extends StatelessWidget {
                 if (!snapshot.hasData) {
                   return Text(
                     "Select",
-                    style: header,
+                    style: HeaderStyles.buttonText,
                   );
                 }
                 return Text(
                   snapshot.data,
-                  style: header,
+                  style: HeaderStyles.buttonText,
                 );
               },
             ),
@@ -164,7 +168,10 @@ class DateTimeCard extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(bottom: 10.0),
-                  child: Text("Start Time"),
+                  child: Text(
+                    "Start Time",
+                    style: HeaderStyles.dateTimePicker,
+                  ),
                 ),
                 Container(
                   padding:
@@ -178,7 +185,7 @@ class DateTimeCard extends StatelessWidget {
                     ],
                     //borderRadius: BorderRadius.circular(25.0),
                     shape: BoxShape.rectangle,
-                    color: Color(0xffff4c5d),
+                    color: Colours.primaryColor,
                   ),
                   child: StreamBuilder(
                     stream: dateTimeBloc.startTime,
@@ -186,20 +193,12 @@ class DateTimeCard extends StatelessWidget {
                       if (!snapshot.hasData) {
                         return Text(
                           "Select",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: HeaderStyles.buttonText,
                         );
                       }
                       return Text(
                         snapshot.data,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: HeaderStyles.buttonText,
                       );
                     },
                   ),
@@ -220,7 +219,10 @@ class DateTimeCard extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(bottom: 10.0),
-                  child: Text("End Time"),
+                  child: Text(
+                    "End Time",
+                    style: HeaderStyles.dateTimePicker,
+                  ),
                 ),
                 Container(
                   padding:
@@ -234,7 +236,7 @@ class DateTimeCard extends StatelessWidget {
                       )
                     ],
                     shape: BoxShape.rectangle,
-                    color: Color(0xffff4c5d),
+                    color: Colours.primaryColor,
                   ),
                   child: StreamBuilder(
                     stream: dateTimeBloc.endTime,
@@ -242,20 +244,12 @@ class DateTimeCard extends StatelessWidget {
                       if (!snapshot.hasData) {
                         return Text(
                           "Select",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: HeaderStyles.buttonText,
                         );
                       }
                       return Text(
                         snapshot.data,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: HeaderStyles.buttonText,
                       );
                     },
                   ),
@@ -285,10 +279,10 @@ class DateTimeCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: snapshot.hasData
                     ? (snapshot.data == id
-                        ? Color(0xffff4c5d)
-                        : Color(0xff214899))
-                    : Color(0xff214899),
-                //borderRadius: BorderRadius.circular(25.0),
+                        ? Colours.primaryColor
+                        : Colours.themeGrey)
+                    : Colours.themeGrey,
+                borderRadius: BorderRadius.circular(25.0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black54,
@@ -301,10 +295,14 @@ class DateTimeCard extends StatelessWidget {
                 child: Text(
                   idToTimeRange[id],
                   style: TextStyle(
-                      color: snapshot.hasData
-                          ? (snapshot.data == id ? Colors.white : Colors.white)
-                          : Colors.white,
-                      fontSize: 12.0),
+                    color: snapshot.hasData
+                        ? (snapshot.data == id
+                            ? Colors.white
+                            : Colours.themeBlack)
+                        : Colours.themeBlack,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             );
@@ -321,7 +319,10 @@ class DateTimeCard extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(bottom: 10.0),
-          child: Text("Available Slots"),
+          child: Text(
+            "Available Slots",
+            style: HeaderStyles.dateTimePicker,
+          ),
         ),
         SingleChildScrollView(
           padding: EdgeInsets.only(left: 5.0),

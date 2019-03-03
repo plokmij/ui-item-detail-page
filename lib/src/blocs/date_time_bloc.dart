@@ -22,7 +22,8 @@ class DateTimeBloc {
   Function get changSize => _size.sink.add;
   Function get changeSlot => _slot.sink.add;
 
-  getTime() {
+  getBookingDetails() {
+    print(_date.value);
     print(_startTime.value);
     print(_endTime.value);
     print(_size.value);
