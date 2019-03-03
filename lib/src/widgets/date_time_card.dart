@@ -283,7 +283,7 @@ class DateTimeCard extends StatelessWidget {
           padding: EdgeInsets.only(left: 5.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots,
+            children: slots.sublist(0,8),
           ),
         ),
         SingleChildScrollView(
