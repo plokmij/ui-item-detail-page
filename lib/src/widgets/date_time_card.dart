@@ -45,18 +45,21 @@ class DateTimeCard extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          buildDateText(context, dateTimeBloc),
+          Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: buildDateText(context, dateTimeBloc),
+          ),
           Divider(
             color: Colors.grey,
             height: 40.0,
           ),
-          availability(context),
+          availability(context, dateTimeBloc),
           Divider(
             color: Colors.grey,
             height: 30.0,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10.0,right: 10.0,bottom: 20.0),
+            padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
             child: buildTimeText(context, dateTimeBloc),
           ),
         ],
@@ -235,10 +238,44 @@ class DateTimeCard extends StatelessWidget {
     );
   }
 
-  Widget availability(BuildContext context) {
+  Widget availability(BuildContext context, DateTimeBloc dateTimeBloc) {
+    Widget buildSlot(int id) {
+      return GestureDetector(
+        onTap: () {
+          dateTimeBloc.changeSlot(id);
+        },
+        child: StreamBuilder(
+          stream: dateTimeBloc.slot,
+          builder: (context, snapshot) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              margin: EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                color: snapshot.hasData?(snapshot.data==id?Color(0xff214899):Colors.grey):Colors.grey,
+                borderRadius: BorderRadius.circular(25.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black54,
+                    offset: Offset(0.5, 1.0),
+                  )
+                ],
+                shape: BoxShape.rectangle,
+              ),
+              child: Center(
+                child: Text(
+                  "04 PM - 05 PM",
+                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
+
     List<Widget> slots = [];
-    for (int i = 0; i < 8; i++) {
-      slots.add(buildSlot());
+    for (int i = 0; i < 24; i++) {
+      slots.add(buildSlot(i));
     }
     return Column(
       children: <Widget>[
@@ -253,46 +290,17 @@ class DateTimeCard extends StatelessWidget {
           padding: EdgeInsets.only(left: 40.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots,
+            children: slots.sublist(8,16),
           ),
         ),
         SingleChildScrollView(
           padding: EdgeInsets.only(left: 5.0),
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: slots,
+            children: slots.sublist(16,24),
           ),
         ),
       ],
-    );
-  }
-
-  Widget buildSlot() {
-    return Container(
-      //height: 20.0,
-      //width: 80.0,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      margin: EdgeInsets.all(5.0),
-      decoration: BoxDecoration(
-        color: Color(0xff214899),
-        borderRadius: BorderRadius.circular(25.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black54,
-            offset: Offset(0.5, 1.0),
-          )
-        ],
-        shape: BoxShape.rectangle,
-      ),
-      child: Center(
-        child: Text(
-          "04 PM - 05 PM",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 12.0
-          ),
-        ),
-      ),
     );
   }
 }
