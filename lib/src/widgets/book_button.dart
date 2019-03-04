@@ -4,7 +4,7 @@ import '../styles/styles.dart';
 
 class BookButton extends StatelessWidget {
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height / 10;
+    final height = MediaQuery.of(context).size.height / 12;
     final dateTimeBloc = DateTimeProvider.of(context);
     
     return GestureDetector(

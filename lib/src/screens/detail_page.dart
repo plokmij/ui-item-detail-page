@@ -5,6 +5,7 @@ import '../widgets/date_time_card.dart';
 import '../widgets/size_selector.dart';
 import '../widgets/price_card.dart';
 import '../widgets/book_button.dart';
+import '../widgets/image_slider.dart';
 import '../styles/styles.dart';
 
 class ItemDetail extends StatelessWidget {
@@ -17,6 +18,17 @@ class ItemDetail extends StatelessWidget {
     SizeSelector(),
     PriceCard(),
   ];
+
+  final List<String> photos = [
+    "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2018/12/25/15457730278274.jpg",
+    "http://outsideoftheboot.com/wp-content/uploads/2015/07/Jose-Gimenez-2015-Atletico.png",
+    "https://e00-marca.uecdn.es/assets/multimedia/imagenes/2017/12/03/15122952947600.jpg",
+    "http://as01.epimg.net/futbol/imagenes/2017/06/04/primera/1496570307_204106_1496570423_noticia_normal.jpg",
+    "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201805/Diego-Costa.png",
+    "https://shakarasquare.com/wp-content/uploads/2017/07/Saul-Niguez.jpg",
+    "https://cdn-s3.si.com/s3fs-public/styles/marquee_large_2x/public/2018/09/28/koke-atletico-madrid-spain.jpg"
+  ];
+
   Widget build(BuildContext context) {
     //final double statusBarHeight = MediaQuery.of(context).padding.top;    
     return Scaffold(
@@ -73,7 +85,7 @@ class ItemDetail extends StatelessWidget {
         shape: BoxShape.rectangle,
         color: Colours.primaryColor,
       ),
-      child: Image.network("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2019/02/28/15513389901606.jpg",fit: BoxFit.cover,colorBlendMode: BlendMode.darken,),
+      child: ImageCarousel(photos: photos,),
     );
   }
 }

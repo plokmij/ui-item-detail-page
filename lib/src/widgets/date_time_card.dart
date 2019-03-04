@@ -78,12 +78,12 @@ class DateTimeCard extends StatelessWidget {
             child: buildDateText(context, dateTimeBloc),
           ),
           Divider(
-            color: Colours.themeBlack,
-            height: 40.0,
+            color: Colours.themeGrey,
+            height: 30.0,
           ),
           availability(context, dateTimeBloc),
           Divider(
-            color: Colours.themeBlack,
+            color: Colours.themeGrey,
             height: 30.0,
           ),
           Padding(

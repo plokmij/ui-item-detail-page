@@ -7,12 +7,14 @@ class DateTimeBloc {
   final _date = BehaviorSubject();
   final _size = BehaviorSubject();
   final _slot = BehaviorSubject();
+  final _image = BehaviorSubject();
 
   Stream get startTime => _startTime.stream;
   Stream get endTime => _endTime.stream;
   Stream get date => _date.stream;
   Stream get size => _size.stream;
   Stream get slot => _slot.stream;
+  Stream get image => _image.stream;
   Stream<bool> get submitValid => Observable.combineLatest4(
       startTime, endTime, date, size, (s, e, d, siz) => true);
 
@@ -21,6 +23,7 @@ class DateTimeBloc {
   Function get changeDate => _date.sink.add;
   Function get changSize => _size.sink.add;
   Function get changeSlot => _slot.sink.add;
+  Function get changeImage => _image.sink.add;
 
   getBookingDetails() {
     print(_date.value);
@@ -35,5 +38,6 @@ class DateTimeBloc {
     _endTime.close();
     _date.close();
     _slot.close();
+    _image.close();
   }
 }
