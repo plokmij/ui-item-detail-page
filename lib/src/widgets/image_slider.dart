@@ -38,15 +38,12 @@ class ImageCarousel extends StatelessWidget {
                   horizontalSwipeMaxHeightThreshold: 50.0),
               child: Container(
                 decoration: BoxDecoration(
-                  //borderRadius: BorderRadius.circular(25.0),
                   image: DecorationImage(
                     image: NetworkImage(
                         photos[snapshot.hasData ? snapshot.data : 0]),
                     fit: BoxFit.cover,
                   ),
                 ),
-                //height: 400.0,
-                //width: 300.0,
               ),
             ),
             Positioned(

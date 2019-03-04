@@ -162,6 +162,11 @@ class DateTimeCard extends StatelessWidget {
                 dateTimeBloc.changeEndTime(initialTime
                     .replacing(hour: initialTime.hour + 1)
                     .format(context));
+                dateTimeBloc.changeSlot(idToTimeRange.indexOf(selectedTime +
+                    " - " +
+                    initialTime
+                        .replacing(hour: initialTime.hour + 1)
+                        .format(context)));
               });
             },
             child: Column(
