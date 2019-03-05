@@ -9,6 +9,7 @@ class DateTimeCard extends StatelessWidget {
     color: Colours.white,
   );
 
+//Needs refactor
   DateTime selectedDate = DateTime.now();
   TimeOfDay initialTime = TimeOfDay.now();
   String s_electedDate = "";
@@ -35,6 +36,7 @@ class DateTimeCard extends StatelessWidget {
     return picked;
   }
 
+//needs refactor
   final List<String> idToTimeRange = [
     "12:00 AM - 1:00 AM",
     "1:00 AM - 2:00 AM",
@@ -278,38 +280,63 @@ class DateTimeCard extends StatelessWidget {
         child: StreamBuilder(
           stream: dateTimeBloc.slot,
           builder: (context, snapshot) {
-            return Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              margin: EdgeInsets.all(5.0),
-              decoration: BoxDecoration(
-                color: snapshot.hasData
-                    ? (snapshot.data == id
-                        ? Colours.primaryColor
-                        : Colours.themeGrey)
-                    : Colours.themeGrey,
-                borderRadius: BorderRadius.circular(25.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black54,
-                    offset: Offset(0.5, 1.0),
-                  )
-                ],
-                shape: BoxShape.rectangle,
-              ),
-              child: Center(
-                child: Text(
-                  idToTimeRange[id],
-                  style: TextStyle(
+            return Stack(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colours.primaryColor,
+                      width: 2.0,
+                    ),
                     color: snapshot.hasData
                         ? (snapshot.data == id
-                            ? Colors.white
-                            : Colours.themeBlack)
-                        : Colours.themeBlack,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
+                            ? Colours.primaryColor
+                            : Colours.white)
+                        : Colours.white,
+                    borderRadius: BorderRadius.circular(25.0),
+                    /*boxShadow: [
+                      BoxShadow(
+                        color: Colors.black54,
+                        offset: Offset(0.5, 1.0),
+                      )
+                    ],*/
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          //margin: EdgeInsets.only(top: 15, left: 15.0),
+                          //padding: EdgeInsets.only(right: 20.0),
+                          width: 18.0,
+                          height: 18.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: snapshot.hasData?(snapshot.data == id)?Colours.white:Colours.primaryColor:Colours.primaryColor,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          idToTimeRange[id],
+                          style: TextStyle(
+                            color: snapshot.hasData
+                                ? (snapshot.data == id
+                                    ? Colors.white
+                                    : Colours.themeBlack)
+                                : Colours.themeBlack,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             );
           },
         ),
